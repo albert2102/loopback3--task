@@ -20,8 +20,10 @@ describe('user', function () {
         "password": "123456"
       })
       .end(function (err, res) {
-        token = res.body.status.token
+        if (res.body.status.token && res.body.status.id) {
+          token = res.body.status.token
         id = res.body.status.id
+        }
         res.should.have.status(200);
         res.body.should.be.a('object');
         res.body.should.have.property('status');
