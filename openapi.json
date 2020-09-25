@@ -1,0 +1,205 @@
+{
+  "info": {
+    "_postman_id": "8ff6df86-087f-4f2a-a01a-a67c6950f162",
+    "name": "Task",
+    "schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json",
+    "title": "task",
+    "version": "1.0.0"
+  },
+  "item": [
+    {
+      "name": "user",
+      "item": [
+        {
+          "name": "create",
+          "_postman_id": "f66063b4-e540-431e-86ea-4010e645833e",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "formdata",
+              "formdata": [
+                {
+                  "key": "avatar",
+                  "type": "file",
+                  "src": "/C:/Users/ALBERT/Pictures/Screenshots/Screenshot (8).png"
+                },
+                {
+                  "key": "userName",
+                  "value": "albert2501",
+                  "type": "text"
+                },
+                {
+                  "key": "fristName",
+                  "value": "Albert",
+                  "type": "text"
+                },
+                {
+                  "key": "lastName",
+                  "value": "Emil",
+                  "type": "text"
+                },
+                {
+                  "key": "email",
+                  "value": "albert.emil2501@gmail.com",
+                  "type": "text"
+                },
+                {
+                  "key": "password",
+                  "value": "qwerty",
+                  "type": "text"
+                }
+              ],
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": "{{localhost}}/api/users/signUp"
+          },
+          "response": []
+        },
+        {
+          "name": "update",
+          "_postman_id": "31632587-97d3-4a17-8de9-8807f4bff929",
+          "request": {
+            "method": "PUT",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI1ZjZjYWRhMWQxMjRlMzM0MDRiOWVkNjkiLCJpc3MiOiJBcHAiLCJpYXQiOjE2MDA5NTc4NTcyODgsImV4cCI6MTYwMDk4OTQxNDg4OH0.2wvbT7EwblYmuJcRC-7FO1l91XWEQyAw2j1YOtPDA8I",
+                "type": "text"
+              }
+            ],
+            "body": {
+              "mode": "formdata",
+              "formdata": [
+                {
+                  "key": "avatar",
+                  "type": "file",
+                  "src": "/C:/Users/ALBERT/Pictures/Screenshots/Screenshot (5).png"
+                },
+                {
+                  "key": "userName",
+                  "value": "albert250",
+                  "type": "text"
+                },
+                {
+                  "key": "fristName",
+                  "value": "Albert11",
+                  "type": "text"
+                },
+                {
+                  "key": "lastName",
+                  "value": "Emil11",
+                  "type": "text"
+                },
+                {
+                  "key": "email",
+                  "value": "albert.emil250@gmail.com",
+                  "type": "text"
+                },
+                {
+                  "key": "oldPassword",
+                  "value": "qwerty",
+                  "type": "text"
+                },
+                {
+                  "key": "newPassword",
+                  "value": "qwerty",
+                  "type": "text"
+                }
+              ],
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": "{{localhost}}/api/users/update/5f6cada1d124e33404b9ed69"
+          },
+          "response": []
+        },
+        {
+          "name": "getallUser",
+          "_postman_id": "0e6f531d-e561-40f8-8c02-28a3eb7c8e49",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI1ZjZjYWRhMWQxMjRlMzM0MDRiOWVkNjkiLCJpc3MiOiJBcHAiLCJpYXQiOjE2MDA5NTc4NTcyODgsImV4cCI6MTYwMDk4OTQxNDg4OH0.2wvbT7EwblYmuJcRC-7FO1l91XWEQyAw2j1YOtPDA8I",
+                "type": "text"
+              }
+            ],
+            "url": {
+              "raw": "{{localhost}}/api/users/getallUser?userName=albertEmil&fristName=Albert&lastName=Emil&email=albert.emil19993@gmail.com&id=5f6cbec25234860e88b62b92",
+              "host": [
+                "{{localhost}}"
+              ],
+              "path": [
+                "api",
+                "users",
+                "getallUser"
+              ],
+              "query": [
+                {
+                  "key": "userName",
+                  "value": "albertEmil"
+                },
+                {
+                  "key": "fristName",
+                  "value": "Albert"
+                },
+                {
+                  "key": "lastName",
+                  "value": "Emil"
+                },
+                {
+                  "key": "email",
+                  "value": "albert.emil19993@gmail.com"
+                },
+                {
+                  "key": "id",
+                  "value": "5f6cbec25234860e88b62b92"
+                }
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "deleteUser",
+          "_postman_id": "512b2c20-2ec0-4acc-b952-9310d6667f13",
+          "request": {
+            "method": "DELETE",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI1ZjZkNTQwY2JiY2RhYTM4YzgxODZlMzYiLCJpc3MiOiJBcHAiLCJpYXQiOjE2MDEwMDA0NjE2MzgsImV4cCI6MTYwMTAzMjAxOTIzOH0.cfnFe2zLNb3fazhUL2D7ncAFdU0BQP6EqixBrjfn9vk",
+                "type": "text"
+              }
+            ],
+            "url": "{{localhost}}/api/users/deleteUser/5f6d540cbbcdaa38c8186e36"
+          },
+          "response": []
+        }
+      ],
+      "_postman_id": "d96da826-1701-450b-a47e-879de53989d1",
+      "protocolProfileBehavior": {}
+    }
+  ],
+  "protocolProfileBehavior": {},
+  "definitions": {
+    "Model": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "integer",
+          "format": "int64"
+        }
+      }
+    }
+  }
+}
