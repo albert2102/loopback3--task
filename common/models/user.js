@@ -80,7 +80,7 @@ module.exports = function(User) {
       if (data.oldPassword && data.newPassword) {
         let checkVaild = await bcrypt.compare(data.oldPassword, user.password);
         if (checkVaild) {
-          data.password = await bcrypt.hash(data.newPassword, salt);
+          user.password = await bcrypt.hash(data.newPassword, salt);
         } else {
           throw new Error('oldpassword is wrong');
         }
@@ -89,15 +89,26 @@ module.exports = function(User) {
       }
       if (req.file) {
         clearImage(user.avatar);
-        data.avatar = '/' + req.file.path;
+        user.avatar = '/' + req.file.path;
       }
-      data = new User(data);
-      data.isValid(function(valid) {
+      if (data.userName) {
+        user.userName = data.userName
+      }
+      if (data.email) {
+        user.email = data.email
+      }
+      if (data.fristName) {
+        user.fristName = data.fristName
+      }
+      if (data.lastName) {
+        user.lastName = data.lastName
+      }
+      user.isValid(function(valid) {
         if (!valid) {
           clearImage(data.avatar);
         }
       });
-      let updateduser = await user.updateAttributes(data);
+      let updateduser = await user.updateAttributes(user);
       return updateduser;
     } catch (err) {
       next(err);
