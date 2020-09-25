@@ -88,8 +88,11 @@ module.exports = function(User) {
         delete data.oldPassword;
       }
       if (req.file) {
+        data.avatar = '/' + req.file.path;
         clearImage(user.avatar);
-        user.avatar = '/' + req.file.path;
+      }
+      if (data.avatar) {
+        user.avatar = data.avatar;
       }
       if (data.userName) {
         user.userName = data.userName
