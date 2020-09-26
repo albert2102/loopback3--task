@@ -1,0 +1,170 @@
+---
+openapi: "3.0.1"
+info:
+  title: "defaultTitle"
+  description: "defaultDescription"
+  version: "0.1"
+servers:
+- url: "https://loopback3--task.herokuapp.com"
+paths:
+  /api/users/deleteUser/{userId}:
+    delete:
+      description: "Auto generated using Swagger Inspector"
+      parameters:
+      - name: "userId"
+        in: "path"
+        description: "string ID of the user to delete"
+        required: true
+        style: "simple"
+        explode: false
+        schema:
+          type: "string"
+      responses:
+        "200":
+          description: "Auto generated using Swagger Inspector"
+          content:
+            application/json; charset=utf-8:
+              schema:
+                type: "string"
+              examples: {}
+      security:
+      - bearerAuth: []
+      servers:
+      - url: "https://loopback3--task.herokuapp.com"
+    servers:
+    - url: "https://loopback3--task.herokuapp.com"
+  /api/users/signup:
+    post:
+      description: "Auto generated using Swagger Inspector"
+      requestBody:
+        content:
+          multipart/form-data:
+            schema:
+              type: "object"
+              properties:
+                userName:
+                  type: "string"
+                fristName:
+                  type: "string"
+                lastName:
+                  type: "string"
+                email:
+                  type: "string"
+                password:
+                  type: "string"
+                avatar:
+                  type: "string"
+                  format: "binary"
+      responses:
+        "200":
+          description: "Auto generated using Swagger Inspector"
+      servers:
+      - url: "https://loopback3--task.herokuapp.com"
+    servers:
+    - url: "https://loopback3--task.herokuapp.com"
+  /api/users/update/{userId}:
+    put:
+      description: "Auto generated using Swagger Inspector"
+      parameters:
+      - name: "userId"
+        in: "path"
+        description: "string ID of the user to update"
+        required: true
+        style: "simple"
+        explode: false
+        schema:
+          type: "string"
+      requestBody:
+        content:
+          multipart/form-data:
+            schema:
+              type: "object"
+              properties:
+                userName:
+                  type: "string"
+                fristName:
+                  type: "string"
+                lastName:
+                  type: "string"
+                email:
+                  type: "string"
+                oldPassword:
+                  type: "string"
+                newPassword:
+                  type: "string"
+                avatar:
+                  type: "string"
+                  format: "binary"
+      responses:
+        "200":
+          description: "Auto generated using Swagger Inspector"
+      security:
+      - bearerAuth: []
+      servers:
+      - url: "https://loopback3--task.herokuapp.com"
+    servers:
+    - url: "https://loopback3--task.herokuapp.com"
+  /api/users/getallUser:
+    get:
+      description: "Auto generated using Swagger Inspector"
+      parameters:
+      - name: "id"
+        in: "query"
+        description: "string ID of the user to update"
+        required: false
+        style: "form"
+        explode: true
+        schema:
+          type: "string"
+      - name: "userName"
+        in: "query"
+        description: "userName of the user"
+        required: false
+        style: "form"
+        explode: true
+        schema:
+          type: "string"
+      - name: "fristName"
+        in: "query"
+        description: "fristName of the user"
+        required: false
+        style: "form"
+        explode: true
+        schema:
+          type: "string"
+      - name: "lastName"
+        in: "query"
+        description: "lastName of the user"
+        required: false
+        style: "form"
+        explode: true
+        schema:
+          type: "string"
+      - name: "email"
+        in: "query"
+        description: "email of the user"
+        required: false
+        style: "form"
+        explode: true
+        schema:
+          type: "string"
+      responses:
+        "200":
+          description: "Auto generated using Swagger Inspector"
+          content:
+            application/json; charset=utf-8:
+              schema:
+                type: "string"
+              examples: {}
+      security:
+      - bearerAuth: []
+      servers:
+      - url: "https://loopback3--task.herokuapp.com"
+    servers:
+    - url: "https://loopback3--task.herokuapp.com"
+components:
+  securitySchemes:
+    bearerAuth:
+      type: "http"
+      scheme: "bearer"
+      bearerFormat: "JWT"
