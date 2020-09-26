@@ -1,3 +1,4 @@
+// multer servises 
 'use strict';
 
 const multer = require('multer');
@@ -5,7 +6,7 @@ const path = require('path');
 const mkdirp = require('mkdirp');
 const mime = require('mime');
 const uuidv4 = require('uuid/v4');
-
+// file filterations 
 const fileFilter = (req, file, cb) => {
   if (file.mimetype == 'image/png' || file.mimetype == 'image/jpg') {
     return cb(null, true);
@@ -14,7 +15,7 @@ const fileFilter = (req, file, cb) => {
   cb('File upload only supports images types jpg or png');
   return cb(null, true);
 };
-
+//storage locatoer 
 module.exports.multerSaveTo = function(folderName) {
   let storage = multer.diskStorage({
     destination: function(req, file, cb) {
@@ -34,7 +35,7 @@ module.exports.multerSaveTo = function(folderName) {
       cb(null, uuidv4() + path.extname(file.originalname));
     },
   });
-
+//limted upload  file 
   return multer({
     storage,
     fileFilter,

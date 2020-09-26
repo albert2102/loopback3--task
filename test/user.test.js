@@ -6,7 +6,7 @@ var server = require('../server/server');
 var should = chai.should();
 var token, id;
 chai.use(chaiHttp);
-
+//post function test
 describe('user', function () {
   it('should create user on POST /api/user/signUp', function (done) {
     chai.request(server)
@@ -43,7 +43,7 @@ describe('user', function () {
         done();
       })
   });
-
+//update function test
   it('should update user on PUT /api/users/update/:userId', function (done) {
     chai.request(server)
       .put(`/api/users/update/${id}`)
@@ -76,7 +76,7 @@ describe('user', function () {
         done();
       });
   });
-
+//get function test
   it('should show all the users or one user  on GET /api/users/getallUser?filter[fields][name]=true', function (done) {
     chai.request(server)
       .get(`/api/users/getallUser?userName=albertEmil&fristName=Albert&lastName=Emil&email=albert.emil19993@gmail.com&id=${id}`)
@@ -89,7 +89,7 @@ describe('user', function () {
         done();
       });
   });
-
+//delete function test
   it('should user delete his account', function (done) {
     chai.request(server)
       .delete(`/api/users/deleteUser/${id}`)

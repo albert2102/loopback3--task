@@ -1,10 +1,12 @@
 'use strict';
+// import our services
 const bcrypt = require('bcrypt');
 const fs = require('fs');
 const path = require('path');
 const jwt = require('../../server/boot/jwt--service');
 
 module.exports = function(User) {
+//our validation models
   User.validatesPresenceOf('userName', 'password',
   'fristName', 'lastName', 'email', 'avatar');
   var re = /^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/;
@@ -20,7 +22,7 @@ module.exports = function(User) {
   {min: 2, message: {min: 'fristName is too short'}});
   User.validatesLengthOf('lastName',
   {min: 2, message: {min: 'lastName is too short'}});
-
+//remote method for creating user
   User.signUp = async function(req, res, next) {
     try {
       let data = req.body;
@@ -57,7 +59,7 @@ module.exports = function(User) {
     http: {path: '/signUp', verb: 'post'},
   });
 
-
+//remote method for updating user
   User.updateUser = async function(req, res, next) {
     try {
       let data = req.body;
@@ -128,7 +130,7 @@ module.exports = function(User) {
     http: {path: '/update/:userId', verb: 'put'},
   });
 
- 
+ //remote method for getting user(s)
   User.getallUser = async function(req, res, next) {
     try {
       let token = req.headers['authorization'];
@@ -160,7 +162,7 @@ module.exports = function(User) {
     returns: {arg: 'status', type: 'object'},
     http: {path: '/getallUser', verb: 'get'},
   });
-
+//hooks for deleting password attrubite from post, ge, put methods' responces
   User.afterRemote('**', function(ctx, user, next) {
     if (ctx.result.status != "User deleted successfully") {
       if (ctx.result.status) {
@@ -175,7 +177,7 @@ module.exports = function(User) {
     }
     next();
   });
-
+//remote method for deleting user
   User.deleteUser = async function(req, res, next) {
     try {
       let token = req.headers['authorization'];
@@ -211,6 +213,7 @@ module.exports = function(User) {
   });
 };
 
+//function for deleting image if validation wrong or throw updating operation 
 const clearImage = (filePath) => {
   filePath = path.join(__dirname, '../..', filePath);
   fs.unlink(filePath, err => { return err; });
