@@ -28,11 +28,13 @@ module.exports = function(User) {
         const salt = bcrypt.genSaltSync();
         data.password = await bcrypt.hash(data.password, salt);
       }
-      if (req.file) {
-        data.avatar = '/' + req.file.path;
-      } else {
-      //   throw new Error('you must provide a picture');
-      };
+      if(data.avatar){
+       if (req.file) {
+          data.avatar = '/' + req.file.path;
+       } else {
+          throw new Error('you must provide a picture');
+       }
+    }
       data = new User(data);
       data.isValid(function(valid) {
         if (!valid) {
