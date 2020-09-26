@@ -7,7 +7,7 @@ const mime = require('mime');
 const uuidv4 = require('uuid/v4');
 
 const fileFilter = (req, file, cb) => {
-  if (file.mimetype == 'image/png' || file.mimetype == 'image/png') {
+  if (file.mimetype == 'image/png' || file.mimetype == 'image/jpg') {
     return cb(null, true);
   }
 
