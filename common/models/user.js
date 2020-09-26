@@ -28,7 +28,7 @@ module.exports = function(User) {
         const salt = bcrypt.genSaltSync();
         data.password = await bcrypt.hash(data.password, salt);
       }
-      if(data.avatar){
+      if(!data.avatar){
        if (req.file) {
           data.avatar = '/' + req.file.path;
        } else {
